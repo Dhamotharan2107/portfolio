@@ -164,9 +164,12 @@
         .nav-links a:not(.nav-cta)::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: var(--pure-white); transform: scaleX(0); transform-origin: right; transition: transform 0.4s var(--ease-smooth); }
         .nav-links a:not(.nav-cta):hover { color: var(--pure-white); }
         .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
-        .nav-cta { font-size: 0.8rem; padding: 0.6rem 1.2rem; background: var(--primary); color: var(--pure-white); border-radius: 6px; font-weight: 700; border: none; cursor: pointer; transition: all 0.3s var(--ease-smooth); transform: translateZ(0); display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); }
-        .nav-cta:hover { transform: scale(0.95) translateZ(0); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6); }
-        .nav-cta svg { width: 14px; height: 14px; }
+        .nav-cta { position: relative; overflow: hidden; font-size: 0.8rem; padding: 0.65rem 1.3rem; background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%); background-size: 200% 200%; color: var(--pure-white); border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: all 0.3s var(--ease-smooth); transform: translateZ(0); display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 18px rgba(37, 99, 235, 0.45); animation: gradientMove 5s ease infinite; }
+        .nav-cta::before { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent); transform: skewX(-20deg); transition: left 0.5s var(--ease-smooth); }
+        .nav-cta:hover::before { left: 125%; }
+        .nav-cta:hover { transform: translateY(-2px) scale(1.04) translateZ(0); box-shadow: 0 8px 30px rgba(37, 99, 235, 0.65); }
+        .nav-cta svg { width: 14px; height: 14px; animation: downloadBounce 1.8s ease infinite; }
+        @keyframes downloadBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
         .mobile-toggle { display: none; background: none; border: none; color: var(--pure-white); cursor: pointer; padding: 0.5rem; }
 
         /* --- Hero --- */
@@ -183,6 +186,10 @@
         .btn-primary:hover { transform: translateY(-3px) translateZ(0); box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5); }
         .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border-hard); }
         .btn-ghost:hover { color: var(--pure-white); border-color: var(--muted); background: rgba(255,255,255,0.05); transform: translateY(-2px) translateZ(0); }
+        .btn.btn-resume { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%); background-size: 200% 200%; color: var(--pure-white); border: none; box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4); animation: gradientMove 5s ease infinite; }
+        .btn.btn-resume::before { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent); transform: skewX(-20deg); transition: left 0.5s var(--ease-smooth); }
+        .btn.btn-resume:hover::before { left: 125%; }
+        .btn.btn-resume:hover { color: var(--pure-white); border: none; background-color: transparent; }
         .hero-code { background: var(--surface); border: 1px solid var(--border-hard); border-radius: 8px; padding: 1.5rem 2rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); max-width: 550px; position: relative; overflow: hidden; opacity: 0; animation: slideUp 1.2s var(--ease-smooth) 1s forwards; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .code-line { display: flex; gap: 1.5rem; margin-bottom: 0.2rem; }
         .line-num { color: rgba(255,255,255,0.15); user-select: none; width: 20px; text-align: right; }
@@ -738,51 +745,10 @@
     </div>
 
     <script>
-        // --- Dynamic Resume Download Generator ---
-        const resumeText = `DHAMOTHARAN N
-AI Engineer | Backend Engineer | Full-Stack Developer
-Chrompet, Chennai - 600044, India | +91 76395 75867 | dhamotharan21072@gmail.com
-LinkedIn: linkedin.com/in/dhamotharan-nagarajan | GitHub: github.com/Dhamotharan-thaagam
-
-PROFESSIONAL SUMMARY
-Software Engineer with 2+ years of experience building AI-powered applications and enterprise software using Python. Experienced in developing scalable backend systems, integrating Generative AI and Large Language Models (LLMs), and building automation solutions from idea to production.
-
-TECHNICAL SKILLS
-Languages: Python, JavaScript, TypeScript, SQL
-Backend: Django, FastAPI, Flask, REST APIs, WebSockets, Celery
-Frontend: React, TypeScript, HTML5, CSS3, Bootstrap, Tailwind CSS
-AI / LLM: OpenAI API, Gemini API, LangChain, RAG, AI Agents, Prompt Engineering, GPT-4 Vision
-Computer Vision: OpenCV, TensorFlow, DeepFace, Tesseract OCR
-Databases: PostgreSQL, MySQL, SQLite, Redis, ChromaDB, FAISS, Milvus
-Cloud & DevOps: AWS, Docker, Nginx, Git, Linux, Cloudflare Workers
-
-PROFESSIONAL EXPERIENCE
-Software Developer - M7 Corporation, Chennai (Sep 2024 - Present)
-- Designed production AI platforms using Python, Django, FastAPI, and OpenAI APIs.
-- Developed scalable REST APIs, webhook integrations, background workers, RAG pipelines, and computer vision/OCR workflows.
-- Managed cloud deployments, DevOps automation, and infrastructure optimization.
-
-Software Engineer - Lmark & Revobig Technology, Chennai (Mar 2024 - Sep 2024)
-- Built enterprise web applications using Django, JavaScript, and MySQL.
-- Developed financial automation tools, third-party API integrations, and improved performance.
-
-KEY PROJECTS
-1. Enterprise HR & Workforce Management Platform (Python, Django, PostgreSQL, TensorFlow, DeepFace)
-2. Thaagam Social Impact Platform (Python, Django, PostgreSQL, Gemini API, OpenCV)
-3. AI Civic Communication & Grievance Platform (Python, Django, FastAPI, LangChain, OpenAI, Gemini)
-4. AI Vision & Document Intelligence Platform (Python, OpenCV, TensorFlow, GPT-4 Vision, Tesseract OCR)
-5. Social Intelligence & X Analytics Platform (Python, Django, PostgreSQL, Redis, Celery)
-6. CommAI - Hospital Automation Platform (Python, Django, FastAPI, OpenAI API, WhatsApp API)
-
-EDUCATION
-B.Sc. Computer Science (Distance Education) 2025 - Present, Alagappa University
-B.A. LL.B 2017 - 2021, North East Frontier Technical University`;
-
-        const blob = new Blob([resumeText], { type: 'text/plain' });
-        const resumeUrl = URL.createObjectURL(blob);
+        // --- Resume Download (real PDF) ---
         document.querySelectorAll('.btn-resume').forEach(btn => {
-            btn.href = resumeUrl;
-            btn.download = 'Dhamotharan-Resume.txt';
+            btn.href = 'Dhamotharan-resume.pdf';
+            btn.download = 'Dhamotharan-Resume.pdf';
         });
 
         // --- Scroll Progress Bar ---
