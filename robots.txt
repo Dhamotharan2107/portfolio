@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /admin/
+Disallow: /login/
+Disallow: /private/
+
 Sitemap: https://dhamotharan.in/sitemap.xml
